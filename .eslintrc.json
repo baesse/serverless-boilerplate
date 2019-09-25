@@ -12,6 +12,7 @@
   "rules": {
     "no-underscore-dangle": "off",
     "consistent-return": "off",
-    "no-console": ["error", { "allow": [ "warn", "error" ]}]
+    "no-console": ["error", { "allow": [ "warn", "error" ]}],
+    "no-param-reassign": "off"
   }
 }
