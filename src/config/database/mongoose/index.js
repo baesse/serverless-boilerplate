@@ -1,8 +1,17 @@
 const mongoose = require('mongoose');
 
+const {
+  [process.env.NODE_ENV]: { database },
+} = require('../../env');
+
 module.exports.connect = async () => {
   try {
-    const dbUrl = 'localhost:27017/serverless-boilerplate';
+    let dbUrl;
+    if (database.user && database.password) {
+      dbUrl = `${database.user}:${database.password}@${database.host}:${database.port}/${database.name}`;
+    } else {
+      dbUrl = `${database.host}:${database.port}/${database.name}`;
+    }
 
     await mongoose.connect(`mongodb://${dbUrl}`, {
       useNewUrlParser: true,

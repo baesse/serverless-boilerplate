@@ -1,10 +1,6 @@
-const mongoose = require('mongoose');
-
 const { responseBuilder } = require('../../helpers');
 const { connect } = require('../../config/database/mongoose');
-const userSchema = require('../../models/user/schema');
-
-const model = mongoose.model('User', userSchema);
+const model = require('../../models/user');
 
 const getUsers = async () => {
   try {
