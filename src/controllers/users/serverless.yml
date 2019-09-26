@@ -4,6 +4,9 @@ provider:
   apiKeys:
     - api_ios
   runtime: nodejs10.16.0 
+  environment: 
+    NODE_ENV: development
+    
 functions:
   users-list:
     handler: users.list
