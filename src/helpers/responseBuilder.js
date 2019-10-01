@@ -1,6 +1,6 @@
 module.exports = {
   responseBuilder: ({ statusCode = 200, headers = {}, body = {} }) => ({
-    statusCode,
+    statusCode: statusCode,
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',

@@ -5,9 +5,8 @@ const model = require('../../models/user');
 const getUsers = async () => {
   try {
     await connect();
-    return model.aggregate().project({
-      __v: false,
-    });
+
+    return model.aggregate().project({ __v: false });
   } catch (error) {
     console.error(error);
     throw error;
@@ -19,15 +18,13 @@ module.exports.list = async (event, context, callback) => {
     const users = await getUsers();
 
     if (users.length === 0) {
-      callback(
+      return callback(
         null,
-        responseBuilder({
-          statusCode: 204,
-        }),
+        responseBuilder({ statusCode: 204 }),
       );
     }
 
-    callback(
+    return callback(
       null,
       responseBuilder({
         statusCode: 200,
@@ -36,13 +33,12 @@ module.exports.list = async (event, context, callback) => {
     );
   } catch (error) {
     console.error(error);
-    callback(
+
+    return callback(
       null,
       responseBuilder({
         statusCode: error.status || 500,
-        body: {
-          error: error.message,
-        },
+        body: { error: error.message },
       }),
     );
   }

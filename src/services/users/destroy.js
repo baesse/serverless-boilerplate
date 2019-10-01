@@ -5,6 +5,7 @@ const model = require('../../models/user');
 const deleteUserById = async (id) => {
   try {
     await connect();
+
     return model.findByIdAndDelete(id);
   } catch (error) {
     console.error(error);
@@ -17,21 +18,19 @@ module.exports.destroy = async (event, context, callback) => {
     const { pathParameters } = event;
 
     await deleteUserById(pathParameters.id);
-    callback(
+
+    return callback(
       null,
-      responseBuilder({
-        statusCode: 204,
-      }),
+      responseBuilder({ statusCode: 204 }),
     );
   } catch (error) {
     console.error(error);
-    callback(
+
+    return callback(
       null,
       responseBuilder({
         statusCode: error.status || 500,
-        body: {
-          errors: [error.message],
-        },
+        body: { errors: [error.message] },
       }),
     );
   }

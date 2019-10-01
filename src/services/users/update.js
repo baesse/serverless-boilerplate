@@ -5,6 +5,7 @@ const model = require('../../models/user');
 const updateUser = async (id, params) => {
   try {
     await connect();
+
     return model.findByIdAndUpdate(id, { $set: params }, { new: true });
   } catch (error) {
     console.error(error);
@@ -21,24 +22,21 @@ module.exports.update = async (event, context, callback) => {
 
     const user = await updateUser(pathParameters.id, JSON.parse(body));
 
-    callback(
+    return callback(
       null,
       responseBuilder({
         statusCode: 200,
-        body: {
-          user,
-        },
+        body: { user },
       }),
     );
   } catch (error) {
     console.error(error);
-    callback(
+
+    return callback(
       null,
       responseBuilder({
         statusCode: error.status || 500,
-        body: {
-          errors: [error.message],
-        },
+        body: { errors: [error.message] },
       }),
     );
   }
