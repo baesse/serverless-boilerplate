@@ -9,7 +9,7 @@
     "aws-sdk": "^2.534.0",
     "gulp": "^4.0.2",
     "mongoose": "^5.7.1",
-    "serverless": "^1.52.2",
+    "serverless": "^1.53.0",
     "serverless-iam-roles-per-function": "^2.0.2"
   },
   "devDependencies": {

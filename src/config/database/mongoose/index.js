@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
-
-const {
-  [process.env.NODE_ENV]: { database },
-} = require('../../env');
+const { [process.env.NODE_ENV]: { database } } = require('../../env');
 
 module.exports.connect = async () => {
   try {
     let dbUrl;
+
     if (database.user && database.password) {
       dbUrl = `${database.user}:${database.password}@${database.host}:${database.port}/${database.name}`;
     } else {
