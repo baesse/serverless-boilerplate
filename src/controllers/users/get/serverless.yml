@@ -1,0 +1,31 @@
+service: yoube-backend
+provider:
+  name: aws
+  apiKeys:
+    - api_ios
+  runtime: nodejs10.16.0 
+  environment: 
+    NODE_ENV: development
+
+functions:
+  users-get:
+      handler: get
+      events:
+        - http:
+            path: /users/{id}
+            method: get
+            cors: true
+            private: true
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-domain-manager
+  - serverless-offline
+
+# custom:
+#   customDomain:
+#     certificateName: '*ioasys.com.br'
+#     domainName: 'apiyoube.ioasys.com.br' # Change this to your domain.
+#     basePath: 'dev' # This will be prefixed to all routes
+#     # stage: ${self:provider.stage}
+#     createRoute53Record: true
