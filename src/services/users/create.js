@@ -1,6 +1,7 @@
 const { responseBuilder } = require('../../helpers');
 const { connect } = require('../../config/database/mongoose');
 const model = require('../../models/user');
+const moment = require('moment');
 
 const createUser = async (params) => {
   try {

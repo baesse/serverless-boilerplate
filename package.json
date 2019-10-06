@@ -9,14 +9,18 @@
     "aws-sdk": "^2.534.0",
     "gulp": "^4.0.2",
     "mongoose": "^5.7.1",
-    "serverless": "^1.52.2",
-    "serverless-iam-roles-per-function": "^2.0.2"
+    "serverless": "^1.52.2"
+  },
+  "scripts": {
+    "watch-server": "nodemon --watch 'src/**/*' -e js --exec bash ./build.sh"
   },
   "devDependencies": {
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.3",
     "serverless-domain-manager": "^3.3.0",
+    "serverless-iam-roles-per-function": "^2.0.2",
     "serverless-offline": "^5.11.0"
   }
 }
